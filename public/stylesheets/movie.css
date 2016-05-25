@@ -1,0 +1,26 @@
+.card-movie {
+  width: 50vw;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.card-movie > div {
+  display: inline-block;
+  padding: 1vw;
+}
+.card-movie > div > img {
+  height: 100%;
+  width: 100%;
+}
+.card-section {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+}
+.wrap-search {
+  width: 50vw;
+  max-height: 80vh;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
