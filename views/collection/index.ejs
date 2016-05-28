@@ -5,6 +5,8 @@
 	<% include ../partials/header %>
 </head>
 <body>
-
+	<% for(var i=0; i<collections.length; i++) { %>
+	<a href="/collections/<%= collections[i]._id %>" title="">Collection</a>
+	<% } %>
 </body>
 </html>

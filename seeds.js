@@ -49,9 +49,9 @@ User.remove({})
     favGenres: ['Action', 'Adventure'],
     collections: []
   });
-	user1.local.password = user1.encrypt('Password1234');
-	user2.local.password = user1.encrypt('Password1234');
-	user3.local.password = user1.encrypt('Password1234');
+	user1.local.password = user1.encrypt('password');
+	user2.local.password = user1.encrypt('password');
+	user3.local.password = user1.encrypt('password');
 	var users = [user1, user2, user3];
 	return User.create(users);
 })

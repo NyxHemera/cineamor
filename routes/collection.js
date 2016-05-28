@@ -23,6 +23,8 @@ function makeError(res, message, status) {
 
 // Take OMDB and convert to DB object
 function parseOMDB(movie, collection) {
+	console.log(movie);
+	console.log(movie.Poster);
 	var newMovie = {
 		title: movie.Title,
 		poster: movie.Poster,
@@ -46,7 +48,10 @@ function parseOMDB(movie, collection) {
 //	Collection Index - GET  						 //
 //---------------------------------------//
 router.get('/', function(req, res, next) {
-  res.render('collection/index.ejs', { currentUser: currentUser });
+	Collection.find()
+	.then(function(collections) {
+		res.render('collection/index.ejs', { currentUser: currentUser, collections: collections });
+	});
 });
 
 //---------------------------------------//
@@ -60,23 +65,37 @@ router.route('/:cid')
 		.populate('users')
 		.populate('forkOf')
 		.exec(function(err, collection) {
+			console.log(collection.movies);
+			console.log(collection.users);
 			res.render('collection/collection.ejs', { collection: collection, isOwner: authorized(""+collection.owner), currentUser: currentUser });
 		});
 	})
 	.put(function(req, res, next) {
+		var m;
+		var c;
 		Collection.findById(req.params.cid)
 		.then(function(collection) {
+			c = collection;
 			if(true/*authorized(""+collection.owner)*/) {
 				Movie.findOne({'imdbID' : req.body.imdbID}, function(err, movie) {
+					// If movie is already in database, no need to create
 					if(movie) {
-						// No need to create, just add to collection
+						m = movie;
+						m.collections.push(c);
+						m.save()
+						.then(function() {
+							c.movies.push(m);
+							c.save();
+						});
 					}else {
 						Movie.create(parseOMDB(req.body, collection), function(err, created) {
 							console.log(err);
 							console.log('created 1 movie');
+							c.movies.push(created);
+							c.save();
 						});
 					}
-				})
+				});
 			}else {
 				console.log('put denied');
 			}

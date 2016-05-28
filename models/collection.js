@@ -3,7 +3,7 @@ var ObjectId = mongoose.Schema.Types.ObjectId;
 
 var Collection = new mongoose.Schema({
 	name: String,
-	movies: [ { id: ObjectId, rating: Number } ],
+	movies: [ { type: ObjectId, ref:'Movie' } ],
 	owner: { type: ObjectId, ref: 'User' },
 	users: [ { type: ObjectId, ref: 'User' } ],
 	forkOf: { type: ObjectId, ref: 'Collection'}

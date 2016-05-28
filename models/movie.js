@@ -3,7 +3,7 @@ var ObjectId = mongoose.Schema.Types.ObjectId;
 
 var Movie = new mongoose.Schema({
 	title: String,
-	image: String,
+	poster: String,
 	year: Number,
 	releaseDate: String,
 	runtime: String,
