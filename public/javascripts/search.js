@@ -45,31 +45,33 @@ angular.module('searchApp', ['ngMaterial', 'ngRoute'])
 
 	// Search Functions
 	function querySearch(query) {
-		return $http.get('http://www.omdbapi.com/?s=' + query + '&type=movie')
+		return $http.get('http://imdb.wemakesites.net/api/search?q=' + query)
+			.then(function(results) {
+				console.log(results);
+				if(results.data.data.results.titles) {
+					return processData(results.data.data.results.titles);
+				}else {
+					return [];
+				}
+			});
+/*		return $http.get('http://www.omdbapi.com/?s=' + query + '&type=movie')
 			.then(function(results) {
 				if(results.data.Search) {
 					return processData(results.data.Search);
 				}else {
 					return [];
 				}
-			});
+			});*/
 	}
 
   function processData(data) {
-  	var titles = [];
-  	for(var i=0; i<data.length; i++) {
-  		titles.push(data[i].Title);
-  	}
-  	if(titles.length === 0) {
-  		titles.push("");
-  	}
+
   	return data.map(function(movie) {
   		return {
-  			value: movie.Title.toLowerCase(),
-  			display: movie.Title,
-  			Title: movie.Title,
-  			Year: movie.Year,
-  			imdbID: movie.imdbID
+  			value: movie.title.toLowerCase(),
+  			display: movie.title,
+  			Title: movie.title,
+  			imdbID: movie.id
   		};
   	});
   }
