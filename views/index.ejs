@@ -3,9 +3,28 @@
   <head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+	<link rel="stylesheet" href="/bower_components/angular-material/angular-material.css">
+	<link rel="stylesheet" type="text/css" href="/stylesheets/movie.css">
+	<script src="/bower_components/jQuery/dist/jquery.min.js"></script>
+	<script src="/bower_components/angular/angular.js"></script>
+	<script src="/bower_components/angular-aria/angular-aria.js"></script>
+	<script src="/bower_components/angular-animate/angular-animate.js"></script>
+	<script src="/bower_components/angular-route/angular-route.min.js"></script>
+	<script src="/bower_components/angular-material/angular-material.js"></script>
+	<script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+	<script type="text/javascript" src='/javascripts/index.module.js'></script>
+	<script type="text/javascript" src='/javascripts/main.controller.js'></script>
+	</head>
+  <body ng-app='cineAmorApp'>
+  	<div layout="row" ng-controller="mainCtrl as mctrl">
+	  <md-sidenav md-component-id="left" class="md-sidenav-left">
+	  	<a ui-sref="home"><p>Home</p></a>
+	    <a ui-sref="login"><p>Login</p></a>
+	    <a ui-sref="collections"><p>All Collections</p></a>
+	  </md-sidenav>
+	  <div ui-view>
+
+	  </div>
+	</div>
   </body>
 </html>
