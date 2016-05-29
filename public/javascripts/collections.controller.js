@@ -1,29 +1,12 @@
 angular.module('cineAmorApp')
-.controller('collectionsCtrl', function() {
+.controller('collectionsCtrl', function(collectionsPromise, collectionPromise, CollectionsService, $state) {
 	var vm = this;
 
-	vm.collection;
-	vm.collections;
+	vm.collection = collectionPromise.data;
+	vm.collections = collectionsPromise.data;// = CollectionsService.loadAllCollections();
 
-	vm.loadAllCollections = function() {
-		console.log('loadingAllCollection');
-		$http.get('/collection').success(function(data) {
-			vm.collections = data;
-		});
-	};
-
-	vm.loadUserCollections = function(user) {
-		$http.get('/'+user._id+'/collections').success(function(data) {
-			vm.collections = data;
-		});
-	};
-
-	vm.loadCollection = function(collection) {
-		$http.get('/collections/'+collection._id).success(function(data) {
-			vm.collection = data;
-		});
-	}
-
+	console.log(vm.collections);
+	console.log(vm.collection);
 	vm.openCollection = function(collection) {
 		$state.go('collection', {collectionId: collection._id});
 	};

@@ -28,9 +28,17 @@ angular.module('cineAmorApp', ['ngMaterial', 'ui.router'])
 		url: '/collections',
 		templateUrl: 'partials/collections.html',
 		controller: 'collectionsCtrl',
-		controllerAs: 'csvm',
+		controllerAs: 'csctrl',
 		onEnter: function() {
 			console.log('collections');
+		},
+		resolve: {
+			collectionsPromise: function($http) {
+				return $http.get('/collections');
+			},
+			collectionPromise: function() {
+				return {};
+			}
 		}
 	};
 	var userCollections = {
@@ -38,14 +46,22 @@ angular.module('cineAmorApp', ['ngMaterial', 'ui.router'])
 		url: '/:userId',
 		templateUrl: 'partials/users.collections.html',
 		controller: 'collectionsCtrl',
-		controllerAs: 'csvm'
+		controllerAs: 'csctrl'
 	};
 	var collection = {
 		name: 'collection',
 		url: '/collections/:collectionId',
-		templateUrl: 'partials/collection',
+		templateUrl: 'partials/collection.html',
 		controller: 'collectionsCtrl',
-		controllerAs: 'csvm'
+		controllerAs: 'csctrl',
+		resolve: {
+			collectionsPromise: function() {
+				return {};
+			},
+			collectionPromise: function($http, $stateParams) {
+				return $http.get('/collections/'+$stateParams.collectionId);
+			}
+		}
 	};
 
 	$stateProvider.state(home);

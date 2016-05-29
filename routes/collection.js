@@ -50,7 +50,8 @@ function parseOMDB(movie, collection) {
 router.get('/', function(req, res, next) {
 	Collection.find()
 	.then(function(collections) {
-		res.render('collection/index.ejs', { currentUser: currentUser, collections: collections });
+		//res.render('collection/index.ejs', { currentUser: currentUser, collections: collections });
+		res.json(collections);
 	});
 });
 
@@ -67,7 +68,8 @@ router.route('/:cid')
 		.exec(function(err, collection) {
 			console.log(collection.movies);
 			console.log(collection.users);
-			res.render('collection/collection.ejs', { collection: collection, isOwner: authorized(""+collection.owner), currentUser: currentUser });
+			//res.render('collection/collection.ejs', { collection: collection, isOwner: authorized(""+collection.owner), currentUser: currentUser });
+			res.json(collection);
 		});
 	})
 	.put(function(req, res, next) {

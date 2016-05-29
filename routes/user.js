@@ -37,7 +37,8 @@ router.route('/:id')
 		User.findById(req.params.id)
 		.populate('collections')
 		.exec(function(err, user) {
-			res.render('user/user.ejs', { user: user, isOwner: authorized(req.params.id), currentUser: currentUser });
+			//res.render('user/user.ejs', { user: user, isOwner: authorized(req.params.id), currentUser: currentUser });
+			res.json(user);
 		});
 	})
 	.put(authenticate, function(req, res, next) {
