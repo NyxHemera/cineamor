@@ -56,6 +56,29 @@ router.get('/', function(req, res, next) {
 });
 
 //---------------------------------------//
+//	Collection New - POST								 //
+//---------------------------------------//
+router.post('/new', function(req, res, next) {
+	if(currentUser) {
+		var newCol = {
+			name: 'Default Name',
+			movies: [],
+			owner: currentUser,
+			users: [currentUser],
+			forkOf: null
+		};
+		Collection.create(newCol, function(err, collection) {
+			currentUser.collections.push(newCol);
+			currentUser.save();
+			res.json(newCol);
+		});	
+	}else {
+		console.log(currentUser);
+		res.json({result: 'failed'});
+	}
+});
+
+//---------------------------------------//
 //	Collection Show - GET & PUT					 //
 //---------------------------------------//
 router.route('/:cid')
@@ -88,6 +111,7 @@ router.route('/:cid')
 						.then(function() {
 							c.movies.push(m);
 							c.save();
+							res.json(c);
 						});
 					}else {
 						Movie.create(parseOMDB(req.body, collection), function(err, created) {
@@ -95,6 +119,7 @@ router.route('/:cid')
 							console.log('created 1 movie');
 							c.movies.push(created);
 							c.save();
+							res.json(c);
 						});
 					}
 				});

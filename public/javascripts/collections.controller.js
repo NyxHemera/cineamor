@@ -11,6 +11,22 @@ angular.module('cineAmorApp')
 	//vm.cid = currentCollection;
 	vm.addMovieToCollection = addMovieToCollection;
 
+	vm.reloadCollection = function() {
+		$http.get('/collections/'+vm.collection._id)
+		.then(function(results) {
+			console.log(results);
+			console.log('reloaded collection');
+			vm.collection = results.data;
+		});
+	}
+
+	vm.reloadCollections = function() {
+		$http.get('/collections')
+		.then(function(results) {
+			vm.collections = results.data;
+		});
+	}
+
 	vm.openCollection = function(collection) {
 		$state.go('collection', {collectionId: collection._id});
 	};
@@ -36,15 +52,17 @@ angular.module('cineAmorApp')
 	function addMovieToCollection() {
 		console.log('AMTC called');
 		$http.put('/collections/'+vm.collection._id, vm.itemShown)
-			.then(function() {
+			.then(function(collection) {
 				console.log('Movie Saved');
+				vm.reloadCollection();
+				vm.reloadCollections();
 			});
 	}
 
 
 	// Search Functions
 	function querySearch(query) {
-		return $http.get('http://imdb.wemakesites.net/api/search?q=' + query)
+/*		return $http.get('http://imdb.wemakesites.net/api/search?q=' + query)
 			.then(function(results) {
 				console.log(results);
 				if(results.data.data.results.titles) {
@@ -52,25 +70,25 @@ angular.module('cineAmorApp')
 				}else {
 					return [];
 				}
-			});
-/*		return $http.get('http://www.omdbapi.com/?s=' + query + '&type=movie')
+			});*/
+		return $http.get('http://www.omdbapi.com/?s=' + query + '&type=movie')
 			.then(function(results) {
 				if(results.data.Search) {
 					return processData(results.data.Search);
 				}else {
 					return [];
 				}
-			});*/
+			});
 	}
 
   function processData(data) {
 
   	return data.map(function(movie) {
   		return {
-  			value: movie.title.toLowerCase(),
-  			display: movie.title,
-  			Title: movie.title,
-  			imdbID: movie.id
+  			value: movie.Title.toLowerCase(),
+  			display: movie.Title,
+  			Title: movie.Title,
+  			imdbID: movie.imdbID
   		};
   	});
   }
