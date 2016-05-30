@@ -23,6 +23,22 @@ angular.module('cineAmorApp')
 		});
 	}
 
+	vm.submitSignup = function() {
+		console.log(vm.email);
+		console.log(vm.password);
+		$http.post('/signup', {email: vm.email, password: vm.password})
+		.then(function(response) {
+			if(response.data.result === 'Success') {
+				console.log('Success!');
+				console.log(response.data.user);
+				vm.user = response.data.user;
+				$state.go('userCollections', {userId: vm.user._id});
+			}else {
+				console.log('Failure!');
+			}
+		});
+	}
+
 	vm.logout = function() {
 		console.log(vm.email);
 		vm.user = undefined;

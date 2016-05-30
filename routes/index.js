@@ -15,13 +15,22 @@ router.route('/signup')
 		res.render('signup.ejs', { message: req.flash() });
 	})
 	.post(function(req, res, next) {
-		var signUpStrategy = passport.authenticate('local-signup', {
+/*		var signUpStrategy = passport.authenticate('local-signup', {
 			successRedirect: '/users',
 			failureRedirect: '/signup',
 			failureFlash: true
 		});
 
-		return signUpStrategy(req, res, next);
+		return signUpStrategy(req, res, next);*/
+		passport.authenticate('local-signup', function(err, user, info) {
+			if (err) { return res.json({result: 'Error'}); }
+			if (!user) { 
+				return res.json({result: info}); 
+			}else {
+				return res.json({result: 'Success', user: user});
+			}
+
+		})(req, res, next);
 	});
 
 // Login Page
@@ -37,22 +46,22 @@ router.route('/login')
 		});
 
 		return loginProperty(req, res, next);*/
-  // generate the authenticate method and pass the req/res
-  	console.log('444'+req.user);
-  	console.log('!!!'+currentUser);
-	  passport.authenticate('local-login', function(err, user, info) {
-	    if (err) { return res.json({result: 'Error'}); }
-	    if (!user) { 
-	    	return res.json({result: 'Failure'}); 
-	    }else {
-	    	User.findById(user._id)
-	    	.populate('collections')
-	    	.exec(function(err, user) {
-		    	return res.json({result: 'Success', user: user});
-	    	});
-	    }
+	// generate the authenticate method and pass the req/res
+		//console.log('444'+req.user);
+		//console.log('!!!'+currentUser);
+		passport.authenticate('local-login', function(err, user, info) {
+			if (err) { return res.json({result: 'Error'}); }
+			if (!user) { 
+				return res.json({result: 'Failure'}); 
+			}else {
+				User.findById(user._id)
+				.populate('collections')
+				.exec(function(err, user) {
+					return res.json({result: 'Success', user: user});
+				});
+			}
 
-	  })(req, res, next);
+		})(req, res, next);
 	});
 
 router.get('/search', function(req, res, next) {
