@@ -5,6 +5,7 @@ var User = require('../models/user');
 
 // Home Page
 router.get('/', function(req, res, next) {
+	console.log(req.user);
 	res.render('index', { title: 'Express', message: req.flash() });
 });
 
@@ -29,13 +30,29 @@ router.route('/login')
 		res.render('login.ejs', { message: req.flash() });
 	})
 	.post(function(req, res, next) {
-		var loginProperty = passport.authenticate('local-login', {
+/*		var loginProperty = passport.authenticate('local-login', {
 			successRedirect: '/users',
 			failureRedirect: '/login',
 			failureFlash: true
 		});
 
-		return loginProperty(req, res, next);
+		return loginProperty(req, res, next);*/
+  // generate the authenticate method and pass the req/res
+  	console.log('444'+req.user);
+  	console.log('!!!'+currentUser);
+	  passport.authenticate('local-login', function(err, user, info) {
+	    if (err) { return res.json({result: 'Error'}); }
+	    if (!user) { 
+	    	return res.json({result: 'Failure'}); 
+	    }else {
+	    	User.findById(user._id)
+	    	.populate('collections')
+	    	.exec(function(err, user) {
+		    	return res.json({result: 'Success', user: user});
+	    	});
+	    }
+
+	  })(req, res, next);
 	});
 
 router.get('/search', function(req, res, next) {

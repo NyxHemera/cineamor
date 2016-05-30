@@ -1,9 +1,10 @@
 angular.module('cineAmorApp')
-.controller('collectionsCtrl', function(collectionsPromise, collectionPromise, CollectionsService, $state, $http) {
+.controller('collectionsCtrl', function(collectionsPromise, collectionPromise, userCollectionsPromise, CollectionsService, $state, $http) {
 	var vm = this;
 
 	vm.collection = collectionPromise.data;
-	vm.collections = collectionsPromise.data;// = CollectionsService.loadAllCollections();
+	vm.collections = collectionsPromise.data;
+	vm.userCollections = userCollectionsPromise.data;
 
 	vm.querySearch = querySearch;
 	vm.selectedItemChange = selectedItemChange;

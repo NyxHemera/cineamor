@@ -38,6 +38,9 @@ angular.module('cineAmorApp', ['ngMaterial', 'ui.router'])
 			},
 			collectionPromise: function() {
 				return {};
+			},
+			userCollectionsPromise: function() {
+				return {};
 			}
 		}
 	};
@@ -46,7 +49,18 @@ angular.module('cineAmorApp', ['ngMaterial', 'ui.router'])
 		url: '/:userId',
 		templateUrl: 'partials/users.collections.html',
 		controller: 'collectionsCtrl',
-		controllerAs: 'csctrl'
+		controllerAs: 'csctrl',
+		resolve: {
+			collectionsPromise: function() {
+				return {};
+			},
+			collectionPromise: function() {
+				return {};
+			},
+			userCollectionsPromise: function($http, $stateParams) {
+				return $http.get('/users/'+$stateParams.userId);
+			}
+		}
 	};
 	var collection = {
 		name: 'collection',
@@ -60,6 +74,9 @@ angular.module('cineAmorApp', ['ngMaterial', 'ui.router'])
 			},
 			collectionPromise: function($http, $stateParams) {
 				return $http.get('/collections/'+$stateParams.collectionId);
+			},
+			userCollectionsPromise: function() {
+				return {};
 			}
 		}
 	};

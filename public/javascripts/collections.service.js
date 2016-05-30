@@ -2,10 +2,30 @@ angular.module('cineAmorApp')
 .service('CollectionsService', function($http, $stateParams) {
 	var vm = this;
 
+	vm.isOwner = function(user, cid) {
+		console.log(user);
+		console.log(cid);
+		return true;
+/*		if(cid) {
+			$http.get('/collections/'+cid).success(function(data) {
+				console.log(user._id);
+				console.log(data);
+				console.log(data.owner._id);
+				if(user._id === data.owner._id) {
+					return true;
+				}else {
+					return false;
+				}
+			});
+		}else {
+			return false;
+		}*/
+	}
+
 	vm.loadAllCollections = function() {
 		console.log('loadingAllCollection');
 		console.log($stateParams);
-		$http.get('/collection').success(function(data) {
+		$http.get('/collections').success(function(data) {
 			return data;
 		});
 	};

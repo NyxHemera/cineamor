@@ -35,7 +35,7 @@ User.remove({})
 	});
   var user2  = new User({
     local: {
-      email: 'test1@gmail.com',
+      email: 'test2@gmail.com',
       password: 'Password1234'
     },
     favGenres: ['Comedy', 'Sci-Fi', 'Horror'],
@@ -43,7 +43,7 @@ User.remove({})
   });
     var user3  = new User({
     local: {
-      email: 'test1@gmail.com',
+      email: 'test3@gmail.com',
       password: 'Password1234'
     },
     favGenres: ['Action', 'Adventure'],

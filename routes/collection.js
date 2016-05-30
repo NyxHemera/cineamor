@@ -59,7 +59,29 @@ router.get('/', function(req, res, next) {
 //	Collection New - POST								 //
 //---------------------------------------//
 router.post('/new', function(req, res, next) {
-	if(currentUser) {
+	User.findById(req.body.user._id)
+	//.populate('collections')
+	.then(function(user) {
+		if(user) {
+			var newCol = {
+				name: 'Default Name',
+				movies: [],
+				owner: user,
+				users: [user],
+				forkOf: null
+			};
+			Collection.create(newCol, function(err, collection) {
+				user.collections.push(collection);
+				user.save(function(err, saved) {
+					return res.json({collection: collection, user: saved});
+				});
+			});
+		}else {
+			console.log(user);
+			return res.json({result: 'Failed'});
+		}
+	});
+/*	if(currentUser) {
 		var newCol = {
 			name: 'Default Name',
 			movies: [],
@@ -75,7 +97,7 @@ router.post('/new', function(req, res, next) {
 	}else {
 		console.log(currentUser);
 		res.json({result: 'failed'});
-	}
+	}*/
 });
 
 //---------------------------------------//

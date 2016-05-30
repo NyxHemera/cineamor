@@ -22,9 +22,11 @@
   	<div layout="row" ng-controller="mainCtrl as mctrl">
 	  <md-sidenav md-component-id="left" class="md-sidenav-left">
 	  	<h1 ui-sref="home" ng-click='mctrl.openLeftMenu();' class='sidenav-item'>Home</h1>
-	    <h1 ui-sref="login" ng-click='mctrl.openLeftMenu();' class='sidenav-item'>Login</h1>
+	    <h1 ui-sref="login" ng-click='mctrl.openLeftMenu();' class='sidenav-item' ng-hide='mctrl.user'>Login</h1>
+	    <h1 ng-click='mctrl.logout(); mctrl.openLeftMenu();' class='sidenav-item' ng-show='mctrl.user'>Logout</h1>
 	    <h1 ui-sref="collections" ng-click='mctrl.openLeftMenu();' class='sidenav-item'>All Collections</h1>
-	    <h1 ui-sref="collections" ng-click='mctrl.createNewCollection(); mctrl.openLeftMenu();' class='sidenav-item'>New Collection</h1>
+	    <h1 ui-sref="userCollections({userId: mctrl.user._id})" ng-click='mctrl.openLeftMenu();' class='sidenav-item' ng-show='mctrl.user'>My Collections</h1>
+	    <h1 ui-sref="collections" ng-click='mctrl.createNewCollection(); mctrl.openLeftMenu();' class='sidenav-item' ng-show='mctrl.user'>New Collection</h1>
 	    <h1 ng-click='mctrl.showMovieSearch(); mctrl.openLeftMenu();' class='sidenav-item' ng-show='mctrl.isCollectionPage();'>Add Movie</h1>
 	  </md-sidenav>
 	  <div ui-view class='view-wrap'>
