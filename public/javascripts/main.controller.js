@@ -66,6 +66,10 @@ angular.module('cineAmorApp')
 		vm.msRevealed = !vm.msRevealed;
 	}
 
+	vm.closeSearch = function() {
+		vm.msRevealed = false;
+	}
+
 	vm.openLeftMenu = function() {
 		$mdSidenav('left').toggle();
 	};

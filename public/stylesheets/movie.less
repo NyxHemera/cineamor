@@ -21,8 +21,36 @@
 	justify-content: center;
 }
 
+.movie-list {
+	width: 100vw;
+	min-height: 100vh;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	align-items: center;
+}
+
+.movie-item {
+	min-width: 300px;
+	margin: 1vh 1vw;
+}
+
+.wrap-search-overlay {
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: rgba(0,0,0,.50);
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: center;
+	align-items: center;
+}
+
 .wrap-search {
 	width: 50vw;
 	max-height: 80vh;
+	background-color: white;
 	box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }

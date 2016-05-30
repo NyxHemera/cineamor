@@ -2,36 +2,35 @@
   Open Left Menu
 </md-button>
 <div class='movie-list'>
-	<h2 ng-repeat="movie in csctrl.collection.movies"><img ng-src="{{movie.poster}}"></h2>
+	<div ng-repeat="movie in csctrl.collection.movies" class='movie-item'><img ng-src="{{movie.poster}}"></div>
 </div>
 
-<div layout='column' class='wrap-search' ng-show='mctrl.msRevealed'>
-	<h1>Movie Search</h1>
+<div layout='column' class='wrap-search-overlay' ng-show='mctrl.msRevealed' ng-click='mctrl.closeSearch();'>
+	<div class='wrap-search' ng-click='$event.stopPropagation()'>
+		<md-content class="md-padding">
+			<form ng-submit='$event.preventDefault()'>
+				<md-autocomplete md-selected-item='csctrl.selectedItem' md-search-text-change='csctrl.searchTextChange(csctrl.searchText)' md-search-text='csctrl.searchText' md-selected-item-change='csctrl.selectedItemChange(item)' md-items="item in csctrl.querySearch(csctrl.searchText)" md-item-text="item.Title" md-min-length="0" placeholder="Movie Title">
+					<md-item-template>
+						<span md-highlight-text='csctrl.searchText' md-highlight-flags='^i'>{{ item.Title }}</span>
+					</md-item-template>
+					<md-not-found>
+						No movies were found.
+					</md-not-found>
+				</md-autocomplete>
+				<br/>
+			</form>
+		</md-content>
 
-	<md-content class="md-padding">
-		<form ng-submit='$event.preventDefault()'>
-			<md-autocomplete md-selected-item='csctrl.selectedItem' md-search-text-change='csctrl.searchTextChange(csctrl.searchText)' md-search-text='csctrl.searchText' md-selected-item-change='csctrl.selectedItemChange(item)' md-items="item in csctrl.querySearch(csctrl.searchText)" md-item-text="item.Title" md-min-length="0" placeholder="Movie Title">
-				<md-item-template>
-					<span md-highlight-text='csctrl.searchText' md-highlight-flags='^i'>{{ item.Title }}</span>
-				</md-item-template>
-				<md-not-found>
-					No movies were found.
-				</md-not-found>
-			</md-autocomplete>
-			<br/>
-		</form>
-	</md-content>
-
-	<section class='card-section'>
-		<div ng-show='csctrl.itemShown' class="card-movie">
-			<div><img ng-src="{{csctrl.itemShown.Poster}}"></div>
-			<div>
-				<h3>{{csctrl.itemShown.Title}}</h3>
-				<h3>{{csctrl.itemShown.Year}}</h3>
-				<p>{{csctrl.itemShown.Plot}}</p>
-				<button ng-click="csctrl.addMovieToCollection();">Add +</button>
+		<section class='card-section'>
+			<div ng-show='csctrl.itemShown' class="card-movie">
+				<div><img ng-src="{{csctrl.itemShown.Poster}}"></div>
+				<div>
+					<h3>{{csctrl.itemShown.Title}}</h3>
+					<h3>{{csctrl.itemShown.Year}}</h3>
+					<p>{{csctrl.itemShown.Plot}}</p>
+					<button ng-click="csctrl.addMovieToCollection();">Add +</button>
+				</div>
 			</div>
-		</div>
-	</section>
-
+		</section>
+	</div>
 </div>
