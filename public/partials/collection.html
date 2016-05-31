@@ -1,4 +1,8 @@
 <div class='movie-list'>
+	<div ng-hide='csctrl.collection.movies.length > 0' class='no-collections'>
+		<h2>You have no Movies!</h2>
+		<h2>Click the Sidebar to Add One!</h2>
+	</div>
 	<div ng-repeat="movie in csctrl.collection.movies" class='movie-item' ng-click='csctrl.switchItem(movie); mctrl.showMovieInfo();'><img ng-src="{{movie.poster}}"></div>
 </div>
 
