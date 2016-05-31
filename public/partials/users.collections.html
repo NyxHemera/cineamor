@@ -1,4 +1,9 @@
 <div class='collections-wrap'>
+	<div ng-hide='csctrl.userCollections.length > 0' class='no-collections'>
+		<h2>You have no Collections!</h2>
+		<h2>Click the Sidebar to Create One!</h2>
+	</div>
+
 	<div ng-repeat="collection in csctrl.userCollections.collections" class='collection-wrap'>
 		<a ng-click='csctrl.openCollection(collection)'>
 			<h2>{{collection.name}}</h2>
