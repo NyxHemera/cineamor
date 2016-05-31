@@ -62,9 +62,10 @@ router.post('/new', function(req, res, next) {
 	User.findById(req.body.user._id)
 	//.populate('collections')
 	.then(function(user) {
+		if(req.body.collectionName === "") { req.body.collectionName = "Default Name";}
 		if(user) {
 			var newCol = {
-				name: 'Default Name',
+				name: req.body.collectionName,
 				movies: [],
 				owner: user,
 				users: [user],

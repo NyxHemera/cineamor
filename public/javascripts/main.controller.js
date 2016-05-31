@@ -52,7 +52,8 @@ angular.module('cineAmorApp')
 	}
 
 	vm.createNewCollection = function() {
-		$http.post('/collections/new', {user: vm.user, email: vm.email, password: vm.password})
+		console.log('submitted');
+		$http.post('/collections/new', {user: vm.user, email: vm.email, password: vm.password, collectionName: vm.cName})
 		.then(function(results) {
 			console.log('success');
 			console.log(results);

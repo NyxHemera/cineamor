@@ -146,6 +146,45 @@
 	}
 }
 
+.nameControl-wrap {
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	width: 100vw;
+}
+
+.name-form {
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: center;
+	align-items: center;
+	> label {
+		font-family: 'Little Lord Fontleroy NF';
+		font-weight: normal;
+		font-style: normal;
+		font-size: 6vh;
+	}
+	input {
+		max-width: 30vw;
+		font-family: 'Georgia';
+		padding: 5px;
+		margin-bottom: 1vh;
+		font-size: 6vh;
+		font-weight: normal;
+		font-style: normal;
+	}
+	> a {
+		font-family: 'Little Lord Fontleroy NF';
+		font-weight: normal;
+		font-style: normal;
+		font-size: 6vh;
+		border-bottom: dotted 1px black;
+		cursor: pointer;
+	}
+}
+
 .nav-trigger {
 	z-index: 5;	
 	position: absolute;

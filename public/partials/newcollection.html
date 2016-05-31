@@ -1,0 +1,8 @@
+<div class='nameControl-wrap'>
+	<form class='name-form' ng-submit='$event.preventDefault()'>
+			<label for="name">Name Your Collection:</label>
+			<input type="text" name="cName" id="cName" ng-model='mctrl.cName'>
+
+		<a ng-click="mctrl.createNewCollection()" >Submit</a>
+	</form>
+</div>

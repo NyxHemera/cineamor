@@ -81,10 +81,17 @@ angular.module('cineAmorApp', ['ngMaterial', 'ui.router'])
 		}
 	};
 
+	var newcollection = {
+		name: 'newcollection',
+		url: '/collection/new',
+		templateUrl: 'partials/newcollection.html'
+	};
+
 	$stateProvider.state(home);
 	$stateProvider.state(login);
 	$stateProvider.state(signup);
 	$stateProvider.state(collections);
 	$stateProvider.state(userCollections);
 	$stateProvider.state(collection);
+	$stateProvider.state(newcollection);
 });
