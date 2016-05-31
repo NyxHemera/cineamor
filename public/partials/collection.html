@@ -1,5 +1,21 @@
 <div class='movie-list'>
-	<div ng-repeat="movie in csctrl.collection.movies" class='movie-item'><img ng-src="{{movie.poster}}"></div>
+	<div ng-repeat="movie in csctrl.collection.movies" class='movie-item' ng-click='csctrl.switchItem(movie); mctrl.showMovieInfo();'><img ng-src="{{movie.poster}}"></div>
+</div>
+
+<div class='wrap-movieinfo-overlay' ng-show='mctrl.miRevealed' ng-click='mctrl.closeMovieInfo()'>
+	<div class='wrap-movieinfo'>
+		<section class='card-section'>
+			<div ng-show='csctrl.itemShown' class="card-movie">
+				<div><img ng-src="{{csctrl.itemShown.poster}}"></div>
+				<div>
+					<h3>{{csctrl.itemShown.title}}</h3>
+					<h3>{{csctrl.itemShown.year}}</h3>
+					<p>{{csctrl.itemShown.plot}}</p>
+					<button ng-click="csctrl.addMovieToCollection();">Add +</button>
+				</div>
+			</div>
+		</section>
+	</div>
 </div>
 
 <div layout='column' class='wrap-search-overlay' ng-show='mctrl.msRevealed' ng-click='mctrl.closeSearch();'>
@@ -8,7 +24,7 @@
 			<form ng-submit='$event.preventDefault()'>
 				<md-autocomplete md-selected-item='csctrl.selectedItem' md-search-text-change='csctrl.searchTextChange(csctrl.searchText)' md-search-text='csctrl.searchText' md-selected-item-change='csctrl.selectedItemChange(item)' md-items="item in csctrl.querySearch(csctrl.searchText)" md-item-text="item.Title" md-min-length="0" placeholder="Movie Title">
 					<md-item-template>
-						<span md-highlight-text='csctrl.searchText' md-highlight-flags='^i'>{{ item.Title }}</span>
+						<span md-highlight-text='csctrl.searchText' md-highlight-flags='^i'>{{ item.Title }} - {{ item.Year }}</span>
 					</md-item-template>
 					<md-not-found>
 						No movies were found.

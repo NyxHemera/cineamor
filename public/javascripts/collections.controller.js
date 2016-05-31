@@ -60,6 +60,12 @@ angular.module('cineAmorApp')
 			});
 	}
 
+	vm.switchItem = function(movie) {
+		console.log('switched');
+		console.log(movie);
+		vm.itemShown = movie;
+	}
+
 
 	// Search Functions
 	function querySearch(query) {
@@ -89,7 +95,8 @@ angular.module('cineAmorApp')
   			value: movie.Title.toLowerCase(),
   			display: movie.Title,
   			Title: movie.Title,
-  			imdbID: movie.imdbID
+  			imdbID: movie.imdbID,
+  			Year: movie.Year
   		};
   	});
   }

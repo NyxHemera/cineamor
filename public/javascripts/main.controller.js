@@ -3,6 +3,7 @@ angular.module('cineAmorApp')
 	var vm = this;
 
 	vm.msRevealed = false;
+	vm.miRevealed = false;
 	vm.user;
 	vm.email;
 	vm.password;
@@ -75,6 +76,14 @@ angular.module('cineAmorApp')
 
 	vm.closeSearch = function() {
 		vm.msRevealed = false;
+	}
+
+	vm.showMovieInfo = function() {
+		vm.miRevealed = !vm.miRevealed;
+	}
+
+	vm.closeMovieInfo = function() {
+		vm.miRevealed = false;
 	}
 
 	vm.openLeftMenu = function() {
