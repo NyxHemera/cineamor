@@ -44,7 +44,7 @@ angular.module('cineAmorApp')
 	}
 
 	function loadMovieToPage(movie) {
-		$http.get('http://www.omdbapi.com/?i='+ movie.imdbID)
+		$http.get('https://www.omdbapi.com/?i='+ movie.imdbID)
 			.then(function(results) {
 				vm.itemShown = results.data;
 			});
@@ -72,7 +72,7 @@ angular.module('cineAmorApp')
 					return [];
 				}
 			});*/
-		return $http.get('http://www.omdbapi.com/?s=' + query + '&type=movie')
+		return $http.get('https://www.omdbapi.com/?s=' + query + '&type=movie')
 			.then(function(results) {
 				if(results.data.Search) {
 					return processData(results.data.Search);
