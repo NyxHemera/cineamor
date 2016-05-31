@@ -11,6 +11,35 @@
 	width: 100vw;
 	min-height: 100vh;
 	padding-top: 7vh;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	align-items: center;
+}
+
+.collection-wrap {
+	outline: none;
+	a {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		flex-flow: column nowrap;
+		justify-content: center;
+		min-width: 300px;
+		margin: 1vh 1vw;
+		cursor: pointer;
+		h2 {
+			text-align: center;
+			font-family: 'Little Lord Fontleroy NF';
+			font-weight: normal;
+			font-style: normal;
+			font-size: 4vmin;
+			margin: 0;
+		}
+		img {
+			padding: 1vh 1vw;
+		}
+	}
 }
 
 .error-message {

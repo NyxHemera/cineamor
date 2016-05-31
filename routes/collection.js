@@ -49,7 +49,8 @@ function parseOMDB(movie, collection) {
 //---------------------------------------//
 router.get('/', function(req, res, next) {
 	Collection.find()
-	.then(function(collections) {
+	.populate('movies')
+	.exec(function(err,collections) {
 		//res.render('collection/index.ejs', { currentUser: currentUser, collections: collections });
 		res.json(collections);
 	});

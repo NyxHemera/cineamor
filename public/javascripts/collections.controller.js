@@ -66,6 +66,15 @@ angular.module('cineAmorApp')
 		vm.itemShown = movie;
 	}
 
+	vm.getCollectionThumb = function(collection) {
+		console.log(collection);
+		if(collection.movies[0]) {
+			return collection.movies[0].poster;
+		}else {
+			return 'http://ia.media-imdb.com/images/M/MV5BMTg1MjQyMDQ4MV5BMl5BanBnXkFtZTgwMTg3ODA4MjE@._V1_SX300.jpg';
+		}
+	}
+
 
 	// Search Functions
 	function querySearch(query) {
