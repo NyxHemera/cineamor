@@ -27,7 +27,7 @@
 			<span></span>
 			<span></span>
   	</a>
-  	<h2 class='logo' ng-hide='mctrl.isHomePage()'>CineAmor</h2>
+  	<h2 ui-sref='home' class='logo' ng-hide='mctrl.isHomePage()'>CineAmor</h2>
 	  <md-sidenav md-component-id="left" class="md-sidenav-left">
 	  	<h1 ui-sref="home" ng-click='mctrl.openLeftMenu();' class='sidenav-item'>Home</h1>
 	    <h1 ui-sref="signup" ng-click='mctrl.openLeftMenu();' class='sidenav-item' ng-hide='mctrl.user'>Signup</h1>
@@ -38,7 +38,7 @@
 	    <h1 ui-sref="collections" ng-click='mctrl.createNewCollection(); mctrl.openLeftMenu();' class='sidenav-item' ng-show='mctrl.user'>New Collection</h1>
 	    <h1 ng-click='mctrl.showMovieSearch(); mctrl.openLeftMenu();' class='sidenav-item' ng-show='mctrl.isCollectionPage();'>Add Movie</h1>
 	  </md-sidenav>
-	  <div ui-view class='view-wrap'>
+	  <div ui-view class='view-wrap fade'>
 
 	  </div>
 	</div>
