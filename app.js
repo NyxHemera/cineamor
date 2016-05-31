@@ -16,8 +16,20 @@ var collectionRouter = require('./routes/collection');
 
 var app = express();
 
+var uristring =
+process.env.MONGOLAB_URI ||
+process.env.MONGOHQ_URL ||
+process.env.MONGODB_URI ||
+'mongodb://localhost/cineamor';
+
 // Connect to DB
-mongoose.connect('mongodb://localhost/cineamor');
+mongoose.connect(uristring, function(err, res) {
+  if(err) {
+    console.log('ERROR connecting to: '+uristring+'. '+err);
+  }else {
+    console.log('Succeeded in connecting to: '+uristring);
+  }
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
