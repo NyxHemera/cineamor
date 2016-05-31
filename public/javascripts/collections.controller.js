@@ -12,6 +12,22 @@ angular.module('cineAmorApp')
 	//vm.cid = currentCollection;
 	vm.addMovieToCollection = addMovieToCollection;
 
+	vm.existsInCollection = function() {
+		console.log('Exists?');
+		console.log(vm.itemShown);
+		console.log(vm.collection);
+		for(var i=0; i<vm.collection.movies.length; i++) {
+			if(vm.itemShown.imdbID === vm.collection.movies[i].imdbID) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	vm.removeMovieFromCollection = function() {
+		
+	}
+
 	vm.reloadCollection = function() {
 		$http.get('/collections/'+vm.collection._id)
 		.then(function(results) {

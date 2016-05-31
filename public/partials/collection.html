@@ -11,7 +11,8 @@
 					<h3>{{csctrl.itemShown.title}}</h3>
 					<h3>{{csctrl.itemShown.year}}</h3>
 					<p>{{csctrl.itemShown.plot}}</p>
-					<button ng-click="csctrl.addMovieToCollection();">Add +</button>
+					<button ng-click="csctrl.addMovieToCollection();" ng-hide='csctrl.existsInCollection()'>Add +</button>
+					<button ng-click="csctrl.removeMovieFromCollection();" ng-show='csctrl.existsInCollection()'>Remove X</button>
 				</div>
 			</div>
 		</section>
@@ -41,7 +42,8 @@
 					<h3>{{csctrl.itemShown.Title}}</h3>
 					<h3>{{csctrl.itemShown.Year}}</h3>
 					<p>{{csctrl.itemShown.Plot}}</p>
-					<button ng-click="csctrl.addMovieToCollection();">Add +</button>
+					<button ng-click="csctrl.addMovieToCollection();" ng-hide='csctrl.existsInCollection()'>Add +</button>
+					<button ng-click="csctrl.removeMovieFromCollection();" ng-show='csctrl.existsInCollection(); csctrl.itemShown'>Remove X</button>
 				</div>
 			</div>
 		</section>

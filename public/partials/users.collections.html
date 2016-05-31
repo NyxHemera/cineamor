@@ -1,1 +1,8 @@
-<h2 ng-repeat="collection in csctrl.userCollections.collections"><a ng-click='csctrl.openCollection(collection)'>{{collection.name}}</a></h2>
+<div class='collections-wrap'>
+	<div ng-repeat="collection in csctrl.userCollections.collections" class='collection-wrap'>
+		<a ng-click='csctrl.openCollection(collection)'>
+			<h2>{{collection.name}}</h2>
+			<img ng-src="{{csctrl.getCollectionThumb(collection)}}">
+		</a>
+	</div>
+</div>

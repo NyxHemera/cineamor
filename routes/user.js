@@ -36,9 +36,14 @@ router.route('/:id')
 	.get(function(req, res, next) {
 		User.findById(req.params.id)
 		.populate('collections')
+		//.populate('collections.movies')
 		.exec(function(err, user) {
 			//res.render('user/user.ejs', { user: user, isOwner: authorized(req.params.id), currentUser: currentUser });
-			res.json(user);
+			User.populate(user, {path: 'collections.movies', model: 'Movie'}, function(err, newUser) {
+				console.log(newUser);
+				res.json(newUser);
+			})
+			//res.json(user);
 		});
 	})
 	.put(authenticate, function(req, res, next) {
