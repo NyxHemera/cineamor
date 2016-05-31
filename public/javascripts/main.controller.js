@@ -7,6 +7,7 @@ angular.module('cineAmorApp')
 	vm.email;
 	vm.password;
 
+
 	vm.submitLogin = function() {
 		console.log(vm.email);
 		console.log(vm.password);
@@ -16,9 +17,11 @@ angular.module('cineAmorApp')
 				console.log('Success!');
 				console.log(response.data.user);
 				vm.user = response.data.user;
+				vm.errorMessage = undefined;
 				$state.go('userCollections', {userId: vm.user._id});
 			}else {
 				console.log('Failure!');
+				vm.errorMessage = 'Incorrect Email or Password';
 			}
 		});
 	}
@@ -62,6 +65,10 @@ angular.module('cineAmorApp')
 		return $state.current.name === 'collection';
 	}
 
+	vm.isHomePage = function() {
+		return $state.current.name === 'home';
+	}
+
 	vm.showMovieSearch = function() {
 		vm.msRevealed = !vm.msRevealed;
 	}
@@ -71,6 +78,7 @@ angular.module('cineAmorApp')
 	}
 
 	vm.openLeftMenu = function() {
+		console.log('test');
 		$mdSidenav('left').toggle();
 	};
 });

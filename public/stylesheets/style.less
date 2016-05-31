@@ -1,6 +1,172 @@
+@font-face {font-family: "Little Lord Fontleroy NF";
+    src: url("http://db.onlinewebfonts.com/t/4a0ed71aba5c9ed973b549db5c867c22.eot");
+    src: url("http://db.onlinewebfonts.com/t/4a0ed71aba5c9ed973b549db5c867c22.eot?#iefix") format("embedded-opentype"),
+    url("http://db.onlinewebfonts.com/t/4a0ed71aba5c9ed973b549db5c867c22.woff2") format("woff2"),
+    url("http://db.onlinewebfonts.com/t/4a0ed71aba5c9ed973b549db5c867c22.woff") format("woff"),
+    url("http://db.onlinewebfonts.com/t/4a0ed71aba5c9ed973b549db5c867c22.ttf") format("truetype"),
+    url("http://db.onlinewebfonts.com/t/4a0ed71aba5c9ed973b549db5c867c22.svg#Little Lord Fontleroy NF") format("svg");
+}
+
+.error-message {
+	font-family: 'Georgia';
+	color: #A64343;
+}
+
+.home-wrap {
+	width: 100vw;
+	min-height: 100vh;
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: center;
+	align-items: center;
+
+	> h1 {
+		margin: 2vh;
+		font-size: 30vmin;
+		font-family: 'Little Lord Fontleroy NF';
+		font-weight: normal;
+		font-style: normal;
+		text-shadow: 3px 3px 4px rgba(0, 0, 0, 0.5);
+	}
+	> div {
+		h2 {
+			display: inline-block;
+			font-size: 6vh;
+			font-family: 'Little Lord Fontleroy NF';
+			font-weight: normal;
+			font-style: normal;
+			margin: 0 4vw;
+			border-bottom: dotted 2px black;
+		}
+	}
+}
+
+.login-form {
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: center;
+	align-items: center;
+/*	width: 100vw;
+	height: 100vh;*/
+	> div {
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: space-between;
+		align-items: center;
+		width: 50vw;
+		font-family: 'Little Lord Fontleroy NF';
+		font-weight: normal;
+		font-style: normal;
+		font-size: 6vh;
+		input {
+			max-width: 30vw;
+			font-family: 'Georgia';
+		}
+	}
+	> a {
+		font-family: 'Little Lord Fontleroy NF';
+		font-weight: normal;
+		font-style: normal;
+		font-size: 6vh;
+		border-bottom: dotted 1px black;
+		cursor: pointer;
+	}
+}
+
+.login-wrap {
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	width: 100vw;
+}
+
+.logo {
+	line-height: 6vh;
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	top: 1vh;
+	right: 1vw;
+	font-size: 6vmin;
+	font-family: 'Little Lord Fontleroy NF';
+	font-weight: normal;
+	font-style: normal;
+	font-size: 6vh;
+}
+
+.md-sidenav-left {
+	h1 {
+		padding-left: 1vw;
+		font-size: 6vmin;
+		font-family: 'Little Lord Fontleroy NF';
+		font-weight: normal;
+		font-style: normal;
+		font-size: 6vh;
+	}
+}
+
+.nav-trigger {
+	z-index: 5;	
+	position: absolute;
+	top: 1vh;
+	left: 1vw;
+	height: 35px;
+	width: 35px;
+	span:first-child {
+		top: 0;
+	}
+	span:nth-of-type(2),
+	span:nth-of-type(3) {
+		top: 15px;
+	}
+	span:last-child {
+		bottom: 0;
+	}
+	span {
+		position: absolute;
+		display: block;
+		width: 35px;
+		height: 5px;
+		content: '';
+		cursor: pointer;
+		transition: all 500ms ease-in-out;
+		border-radius: 10px;
+		background: black;
+	}
+}
+
+.nav-trigger-on {
+	span:first-child,
+	span:last-child {
+		background-color: transparent;
+	}
+	span:nth-of-type(2) {
+		transform: rotate(45deg);
+	}
+	span:nth-of-type(3) {
+		transform: rotate(-45deg);
+	}
+	span {
+		top: 15px;
+	}
+}
+
 .view-wrap {
 	position: absolute;
 	width: 100vw;
 	min-height: 100vh;
-	//background-color: black;
+}
+
+@media only screen and (max-device-width: 768px) {
+	.login-form {
+		> div {
+			width: 90vw;
+			input {
+				max-width: 30vw;
+				font-family: 'Georgia';
+			}
+		}
+	}
 }
