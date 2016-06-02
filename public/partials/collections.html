@@ -1,5 +1,5 @@
 <div class='collections-wrap'>
-	<div ng-hide='csctrl.collections.length > 0' class='no-collections'>
+	<div ng-hide='!csctrl.collections || csctrl.collections.length > 0' class='no-collections'>
 		<h2>There are no Collections!</h2>
 		<h2 ng-show='mctrl.user'>Click the Sidebar to Create One!</h2>
 		<h2 ng-hide='mctrl.user'>Click the Sidebar to Log In and Create One!</h2>

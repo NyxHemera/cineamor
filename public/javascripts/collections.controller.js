@@ -13,11 +13,8 @@ angular.module('cineAmorApp')
 	vm.addMovieToCollection = addMovieToCollection;
 
 	vm.existsInCollection = function() {
-		console.log('Exists?');
-		console.log(vm.itemShown);
-		console.log(vm.collection);
 		for(var i=0; i<vm.collection.movies.length; i++) {
-			if(vm.itemShown.imdbID === vm.collection.movies[i].imdbID) {
+			if(vm.itemShown && vm.itemShown.imdbID === vm.collection.movies[i].imdbID) {
 				return true;
 			}
 		}
@@ -83,7 +80,6 @@ angular.module('cineAmorApp')
 	}
 
 	vm.getCollectionThumb = function(collection) {
-		console.log(collection);
 		if(collection.movies[0]) {
 			return collection.movies[0].poster;
 		}else {
