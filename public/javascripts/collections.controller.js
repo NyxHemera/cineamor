@@ -12,6 +12,10 @@ angular.module('cineAmorApp')
 	//vm.cid = currentCollection;
 	vm.addMovieToCollection = addMovieToCollection;
 	vm.key = '3320eaacc515c2e2e26d63a0d097bad0';
+	vm.GBKEY = 'rKq97wCG4JY5omkelS8v8cefJipTHSZD';
+	vm.GBST = 'https://api-public.guidebox.com/v1.43/US/';
+	vm.GBIMDB = '/search/movie/id/imdb/';
+	vm.GBID = '/movie/';
 
 	vm.getTMDBConfig = function() {
 		$http.get('https://api.themoviedb.org/3/configuration?api_key=3320eaacc515c2e2e26d63a0d097bad0')
@@ -37,6 +41,20 @@ angular.module('cineAmorApp')
 
 	vm.removeMovieFromCollection = function() {
 		
+	}
+
+	// Pull playback sources from guidebox. Doesn't have netflix...bummer
+	vm.getSources = function(movie) {
+		console.log('GETSOURCES');
+		$http.get(vm.GBST + vm.GBKEY + vm.GBIMDB + movie.imdbID)
+		.then(function(res) {
+			console.log(res.data);
+			$http.get(vm.GBST + vm.GBKEY + vm.GBID + res.data.id)
+			.then(function(res2) {
+				console.log(res2.data);
+
+			});
+		});
 	}
 
 	vm.reloadCollection = function() {
@@ -71,14 +89,11 @@ angular.module('cineAmorApp')
 	}
 
 	function loadMovieToPage(movie) {
+		//vm.getSources(movie);
 		$http.get('https://www.omdbapi.com/?i='+ movie.imdbID)
 			.then(function(results) {
-				console.log('lmtp results');
-				console.log(results);
 				$http.get('https://api.themoviedb.org/3/find/'+ movie.imdbID + '?external_source=imdb_id&api_key=' + vm.key)
 				.then(function(results2) {
-					console.log(results2);
-					console.log(results);
 					results.data.Poster = vm.base_url + vm.poster_sizes[4] + '/' + results2.data.movie_results[0].poster_path;
 					vm.itemShown = results.data;
 				});
