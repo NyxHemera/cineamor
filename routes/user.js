@@ -34,6 +34,7 @@ router.get('/', function(req, res, next) {
 //---------------------------------------//
 router.route('/:id')
 	.get(function(req, res, next) {
+		console.log(currentUser);
 		User.findById(req.params.id)
 		.populate('collections')
 		//.populate('collections.movies')

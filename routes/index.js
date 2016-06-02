@@ -9,28 +9,26 @@ router.get('/', function(req, res, next) {
 	res.render('index', { title: 'Express', message: req.flash() });
 });
 
+router.get('/currentUser', function(req, res, next) {
+	console.log('!!!' + currentUser);
+	User.populate(currentUser, {path: 'collections', model: 'Collection'}, function(err, user) {
+		res.json(user);
+	});
+})
+
 // Signup Page
 router.route('/signup')
 	.get(function(req, res, next) {
 		res.render('signup.ejs', { message: req.flash() });
 	})
-	.post(function(req, res, next) {
-/*		var signUpStrategy = passport.authenticate('local-signup', {
-			successRedirect: '/users',
-			failureRedirect: '/signup',
-			failureFlash: true
-		});
-
-		return signUpStrategy(req, res, next);*/
-		passport.authenticate('local-signup', function(err, user, info) {
-			if (err) { return res.json({result: 'Error'}); }
-			if (!user) { 
-				return res.json({result: info}); 
-			}else {
-				return res.json({result: 'Success', user: user});
-			}
-
-		})(req, res, next);
+	.post(passport.authenticate('local-signup'), function(req, res) {
+		//if (err) { return res.json({result: 'Error'}); }
+		console.log(req);
+		if (!req.user) { 
+			return res.json({result: info}); 
+		}else {
+			return res.json({result: 'Success', user: req.user});
+		}
 	});
 
 // Login Page
@@ -38,30 +36,17 @@ router.route('/login')
 	.get(function(req, res, next) {
 		res.render('login.ejs', { message: req.flash() });
 	})
-	.post(function(req, res, next) {
-/*		var loginProperty = passport.authenticate('local-login', {
-			successRedirect: '/users',
-			failureRedirect: '/login',
-			failureFlash: true
+	.post(passport.authenticate('local-login'), function(req, res) {
+		console.log('passed authenticate');
+		console.log(res);
+		console.log('!!!');
+		console.log(req.user);
+		User.populate(req.user, {path: 'collections', model: 'Collection'}, function(err, user) {
+			console.log('???');
+			console.log(user);
+			console.log(currentUser);
+			res.json(user);
 		});
-
-		return loginProperty(req, res, next);*/
-	// generate the authenticate method and pass the req/res
-		//console.log('444'+req.user);
-		//console.log('!!!'+currentUser);
-		passport.authenticate('local-login', function(err, user, info) {
-			if (err) { return res.json({result: 'Error'}); }
-			if (!user) { 
-				return res.json({result: 'Failure'}); 
-			}else {
-				User.findById(user._id)
-				.populate('collections')
-				.exec(function(err, user) {
-					return res.json({result: 'Success', user: user});
-				});
-			}
-
-		})(req, res, next);
 	});
 
 router.get('/search', function(req, res, next) {

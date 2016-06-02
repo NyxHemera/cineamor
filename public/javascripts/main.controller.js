@@ -8,16 +8,27 @@ angular.module('cineAmorApp')
 	vm.email;
 	vm.password;
 
+	vm.checkCurrentUser = function() {
+		$http.get('/currentUser')
+		.then(function(results) {
+			console.log(results);
+			if(results.data) {
+				vm.user = results.data;
+			}
+		});
+	}
+
+	vm.checkCurrentUser();
 
 	vm.submitLogin = function() {
 		console.log(vm.email);
 		console.log(vm.password);
 		$http.post('/login', {email: vm.email, password: vm.password})
 		.then(function(response) {
-			if(response.data.result === 'Success') {
+			if(response.data) {
 				console.log('Success!');
-				console.log(response.data.user);
-				vm.user = response.data.user;
+				console.log(response);
+				vm.user = response.data;
 				vm.errorMessage = undefined;
 				$state.go('userCollections', {userId: vm.user._id});
 			}else {
@@ -48,7 +59,7 @@ angular.module('cineAmorApp')
 		vm.user = undefined;
 		vm.email = undefined;
 		vm.password = undefined;
-		$state.go('collections');
+		$state.go('home');
 	}
 
 	vm.createNewCollection = function() {
