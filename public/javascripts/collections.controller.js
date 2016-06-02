@@ -11,6 +11,20 @@ angular.module('cineAmorApp')
 	vm.searchTextChange = searchTextChange;
 	//vm.cid = currentCollection;
 	vm.addMovieToCollection = addMovieToCollection;
+	vm.key = '3320eaacc515c2e2e26d63a0d097bad0';
+
+	vm.getTMDBConfig = function() {
+		$http.get('https://api.themoviedb.org/3/configuration?api_key=3320eaacc515c2e2e26d63a0d097bad0')
+		.then(function(result) {
+			console.log(result);
+			vm.base_url = result.data.images.base_url;
+			vm.secure_base_url = result.data.images.secure_base_url;
+			vm.backdrop_sizes = result.data.images.backdrop_sizes;
+			vm.poster_sizes = result.data.images.poster_sizes;
+		});
+	}
+
+	vm.getTMDBConfig();
 
 	vm.existsInCollection = function() {
 		for(var i=0; i<vm.collection.movies.length; i++) {
@@ -59,7 +73,16 @@ angular.module('cineAmorApp')
 	function loadMovieToPage(movie) {
 		$http.get('https://www.omdbapi.com/?i='+ movie.imdbID)
 			.then(function(results) {
-				vm.itemShown = results.data;
+				console.log('lmtp results');
+				console.log(results);
+				$http.get('https://api.themoviedb.org/3/find/'+ movie.imdbID + '?external_source=imdb_id&api_key=' + vm.key)
+				.then(function(results2) {
+					console.log(results2);
+					console.log(results);
+					results.data.Poster = vm.base_url + vm.poster_sizes[4] + '/' + results2.data.movie_results[0].poster_path;
+					vm.itemShown = results.data;
+				});
+				//vm.itemShown = results.data;
 			});
 	}
 
@@ -83,7 +106,7 @@ angular.module('cineAmorApp')
 		if(collection.movies[0]) {
 			return collection.movies[0].poster;
 		}else {
-			return 'http://ia.media-imdb.com/images/M/MV5BMTg1MjQyMDQ4MV5BMl5BanBnXkFtZTgwMTg3ODA4MjE@._V1_SX300.jpg';
+			return 'http://image.tmdb.org/t/p/w500//hBIiCg7BovnPHFOxurKEp5hidV4.jpg';
 		}
 	}
 
