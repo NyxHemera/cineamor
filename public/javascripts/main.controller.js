@@ -98,6 +98,19 @@ angular.module('cineAmorApp')
 		vm.miRevealed = false;
 	}
 
+	vm.isOwner = function() {
+		if(!vm.user) {
+			return false;
+		}else{
+			for(var i=0; i<vm.user.collections.length; i++) {
+				if(vm.user.collections[i]._id === $stateParams.collectionId) {
+					return true;
+				}
+			}
+			return false;
+		}
+	}
+
 	vm.openLeftMenu = function() {
 		console.log('test');
 		$mdSidenav('left').toggle();

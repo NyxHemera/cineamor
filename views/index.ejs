@@ -36,7 +36,7 @@
 	    <h1 ui-sref="collections" ng-click='mctrl.openLeftMenu();' class='sidenav-item'>All Collections</h1>
 	    <h1 ui-sref="userCollections({userId: mctrl.user._id})" ng-click='mctrl.openLeftMenu();' class='sidenav-item' ng-show='mctrl.user'>My Collections</h1>
 	    <h1 ui-sref="newcollection" ng-click='mctrl.openLeftMenu();' class='sidenav-item' ng-show='mctrl.user'>New Collection</h1>
-	    <h1 ng-click='mctrl.showMovieSearch(); mctrl.openLeftMenu();' class='sidenav-item' ng-show='mctrl.isCollectionPage();'>Add Movie</h1>
+	    <h1 ng-click='mctrl.showMovieSearch(); mctrl.openLeftMenu();' class='sidenav-item' ng-show='mctrl.isCollectionPage && mctrl.isOwner();'>Add Movie</h1>
 	  </md-sidenav>
 	  <div ui-view class='view-wrap fade'>
 
