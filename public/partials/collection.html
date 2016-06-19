@@ -15,7 +15,6 @@
 					<h3>{{csctrl.itemShown.title}}</h3>
 					<h3>{{csctrl.itemShown.year}}</h3>
 					<p>{{csctrl.itemShown.plot}}</p>
-					<button ng-click="csctrl.addMovieToCollection();" ng-hide='csctrl.existsInCollection()'>Add +</button>
 					<button ng-click="csctrl.removeMovieFromCollection();" ng-show='csctrl.existsInCollection()'>Remove X</button>
 				</div>
 			</div>
@@ -24,8 +23,8 @@
 </div>
 
 <div layout='column' class='wrap-search-overlay' ng-show='mctrl.msRevealed' ng-click='mctrl.closeSearch();'>
-	<div class='wrap-search' ng-click='$event.stopPropagation()'>
-		<md-content class="md-padding">
+	<div class='wrap-search' ng-click='$event.stopPropagation()'  ng-class="{'dark' : mctrl.dark}">
+		<md-content class="md-padding"  ng-class="{'dark' : mctrl.dark}">
 			<form ng-submit='$event.preventDefault()'>
 				<md-autocomplete md-selected-item='csctrl.selectedItem' md-search-text-change='csctrl.searchTextChange(csctrl.searchText)' md-search-text='csctrl.searchText' md-selected-item-change='csctrl.selectedItemChange(item)' md-items="item in csctrl.querySearch(csctrl.searchText)" md-item-text="item.Title" md-min-length="0" placeholder="Movie Title">
 					<md-item-template>
@@ -47,7 +46,6 @@
 					<h3>{{csctrl.itemShown.Year}}</h3>
 					<p>{{csctrl.itemShown.Plot}}</p>
 					<button ng-click="csctrl.addMovieToCollection();" ng-hide='csctrl.existsInCollection()'>Add +</button>
-					<button ng-click="csctrl.removeMovieFromCollection();" ng-show='csctrl.existsInCollection(); csctrl.itemShown'>Remove X</button>
 				</div>
 			</div>
 		</section>
