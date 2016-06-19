@@ -1,8 +1,8 @@
 <div class='home-wrap'>
 	<h1>CineAmor</h1>
 	<div>
-		<h2 ui-sref='signup' ng-hide='mctrl.user'>Signup</h2>
-		<h2 ui-sref='login' ng-hide='mctrl.user'>Login</h2>
-		<h2 ui-sref='collections' ng-show='mctrl.user'>View Collections</h2>
+		<h2 ui-sref='signup' ng-hide='mctrl.user' ng-class="{dark : mctrl.dark}">Signup</h2>
+		<h2 ui-sref='login' ng-hide='mctrl.user' ng-class="{dark : mctrl.dark}">Login</h2>
+		<h2 ui-sref='collections' ng-show='mctrl.user' ng-class="{dark : mctrl.dark}">View Collections</h2>
 	</div>	
 </div>

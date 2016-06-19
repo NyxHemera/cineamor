@@ -8,6 +8,8 @@ angular.module('cineAmorApp')
 	vm.email;
 	vm.password;
 
+	vm.dark = true;
+
 	vm.checkCurrentUser = function() {
 		$http.get('/currentUser')
 		.then(function(results) {
@@ -96,6 +98,10 @@ angular.module('cineAmorApp')
 
 	vm.closeMovieInfo = function() {
 		vm.miRevealed = false;
+	}
+
+	vm.toggleDark = function() {
+		vm.dark = !vm.dark;
 	}
 
 	vm.isOwner = function() {

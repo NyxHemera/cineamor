@@ -7,7 +7,7 @@
 </div>
 
 <div class='wrap-movieinfo-overlay' ng-show='mctrl.miRevealed' ng-click='mctrl.closeMovieInfo()'>
-	<div class='wrap-movieinfo'>
+	<div class='wrap-movieinfo' ng-class="{'dark' : mctrl.dark}">
 		<section class='card-section'>
 			<div ng-show='csctrl.itemShown' class="card-movie">
 				<div><img ng-src="{{csctrl.itemShown.poster}}"></div>

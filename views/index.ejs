@@ -19,17 +19,19 @@
 		<script type="text/javascript" src='/javascripts/main.controller.js'></script>
 		<script type="text/javascript" src='/javascripts/collections.controller.js'></script>
 		</head>
-  <body ng-app='cineAmorApp'>
-  	<div layout="row" ng-controller="mainCtrl as mctrl">
-  	<a class='nav-trigger' ng-click="mctrl.openLeftMenu()">
+  <body ng-app='cineAmorApp' ng-controller="mainCtrl as mctrl" ng-class="{dark : mctrl.dark}">
+  	<div layout="row">
+  	<a class='nav-trigger' ng-click="mctrl.openLeftMenu()" ng-class="{'dark-trigger' : mctrl.dark}">
   		<span></span>
 			<span></span>
 			<span></span>
 			<span></span>
   	</a>
   	<h2 ui-sref='home' class='logo' ng-hide='mctrl.isHomePage()'>CineAmor</h2>
-	  <md-sidenav md-component-id="left" class="md-sidenav-left">
+	  <md-sidenav md-component-id="left" class="md-sidenav-left" ng-class="{dark : mctrl.dark}">
 	  	<h1 ui-sref="home" ng-click='mctrl.openLeftMenu();' class='sidenav-item'>Home</h1>
+	  	<h1 ng-click='mctrl.toggleDark(); mctrl.openLeftMenu();' ng-show='mctrl.dark' class='sidenav-item'>Light Mode</h1>
+	  	<h1 ng-click='mctrl.toggleDark(); mctrl.openLeftMenu();' ng-hide='mctrl.dark' class='sidenav-item'>Dark Mode</h1>
 	    <h1 ui-sref="signup" ng-click='mctrl.openLeftMenu();' class='sidenav-item' ng-hide='mctrl.user'>Signup</h1>
 	    <h1 ui-sref="login" ng-click='mctrl.openLeftMenu();' class='sidenav-item' ng-hide='mctrl.user'>Login</h1>
 	    <h1 ng-click='mctrl.logout(); mctrl.openLeftMenu();' class='sidenav-item' ng-show='mctrl.user'>Logout</h1>
