@@ -40,7 +40,12 @@ angular.module('cineAmorApp')
 	}
 
 	vm.removeMovieFromCollection = function() {
-		
+		$http.put('/collections/'+vm.collection._id+'/removeMovie', vm.itemShown)
+			.then(function(collection) {
+				console.log('Movie Removed');
+				vm.reloadCollection();
+				vm.reloadCollections();
+			});
 	}
 
 	// Pull playback sources from guidebox. Doesn't have netflix...bummer

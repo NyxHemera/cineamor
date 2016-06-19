@@ -168,5 +168,21 @@ router.route('/cid/edit')
 		}
 	});
 
+router.put('/:cid/removeMovie', function(req, res, next) {
+	Collection.findById(req.params.cid)
+	.then(function(collection) {
+		for(var i=0; i<collection.movies.length; i++) {
+			if(''+collection.movies[i]=== req.body._id) {
+				collection.movies.splice(i, 1);
+				break;
+			}
+		}
+		collection.save()
+		.then(function() {
+			res.json('done');
+		});
+	});
+});
+
 
 module.exports = router;
