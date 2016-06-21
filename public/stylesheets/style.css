@@ -1,1 +1,279 @@
-@font-face{font-family:"Little Lord Fontleroy NF";src:url(http://db.onlinewebfonts.com/t/4a0ed71aba5c9ed973b549db5c867c22.eot);src:url(http://db.onlinewebfonts.com/t/4a0ed71aba5c9ed973b549db5c867c22.eot?#iefix) format("embedded-opentype"),url(http://db.onlinewebfonts.com/t/4a0ed71aba5c9ed973b549db5c867c22.woff2) format("woff2"),url(http://db.onlinewebfonts.com/t/4a0ed71aba5c9ed973b549db5c867c22.woff) format("woff"),url(http://db.onlinewebfonts.com/t/4a0ed71aba5c9ed973b549db5c867c22.ttf) format("truetype"),url("http://db.onlinewebfonts.com/t/4a0ed71aba5c9ed973b549db5c867c22.svg#Little Lord Fontleroy NF") format("svg")}.collections-wrap{width:100vw;min-height:93vh;padding-top:7vh;display:flex;flex-flow:row wrap;justify-content:center;align-items:center}.collection-wrap{outline:0}.collection-wrap a{width:100%;height:100%;display:flex;flex-flow:column nowrap;justify-content:center;min-width:300px;margin:1vh 1vw;cursor:pointer}.collection-wrap a h2{text-align:center;font-family:'Little Lord Fontleroy NF';font-weight:400;font-style:normal;font-size:4vmin;margin:0}.collection-wrap a img{padding:1vh 1vw}.dark{color:#f7f7f7;background-color:#1C1C1C!important;border-color:#f7f7f7!important}.dark-trigger span{background-color:#f7f7f7!important}.error-message{font-family:Georgia;color:#A64343}.fade{position:absolute;top:0;left:0;right:0;height:100%;opacity:1}.fade.ng-enter{-webkit-transition:all 1s ease;transition:all 1s ease}.fade.ng-leave{-webkit-transition:all .5s ease;transition:all .5s ease}.fade.ng-enter{opacity:0}.fade.ng-enter-active{opacity:1}.fade.ng-leave{opacity:1}.fade.ng-leave-active{opacity:0}.home-wrap{width:100vw;min-height:100vh;display:flex;flex-flow:column nowrap;justify-content:center;align-items:center}.home-wrap>h1{margin:2vh;font-size:30vmin;font-family:'Little Lord Fontleroy NF';font-weight:400;font-style:normal;text-shadow:3px 3px 4px rgba(0,0,0,.5)}.home-wrap>div h2{display:inline-block;font-size:6vh;font-family:'Little Lord Fontleroy NF';font-weight:400;font-style:normal;margin:0 4vw;border-bottom:dotted 2px #000;cursor:pointer}.login-form{display:flex;flex-flow:column nowrap;justify-content:center;align-items:center}.login-form>div{display:flex;flex-flow:row wrap;justify-content:space-between;align-items:center;width:50vw;font-family:'Little Lord Fontleroy NF';font-weight:400;font-style:normal;font-size:6vh}.login-form>div input{max-width:30vw;font-family:Georgia;padding:5px;margin-bottom:1vh}.login-form>a{font-family:'Little Lord Fontleroy NF';font-weight:400;font-style:normal;font-size:6vh;border-bottom:dotted 1px #000;cursor:pointer}.login-wrap{display:flex;flex-flow:column nowrap;justify-content:center;align-items:center;height:100vh;width:100vw}.logo{line-height:6vh;margin:0;padding:0;position:absolute;top:1vh;right:1vw;font-size:6vmin;font-family:'Little Lord Fontleroy NF';font-weight:400;font-style:normal;font-size:6vh;z-index:5}.md-sidenav-left{overflow-x:hidden}.md-sidenav-left h1{padding-left:1vw;font-size:6vmin;font-family:'Little Lord Fontleroy NF';font-weight:400;font-style:normal;font-size:6vh}.nameControl-wrap{display:flex;flex-flow:column nowrap;justify-content:center;align-items:center;height:100vh;width:100vw}.name-form{display:flex;flex-flow:column nowrap;justify-content:center;align-items:center}.name-form>label{font-family:'Little Lord Fontleroy NF';font-weight:400;font-style:normal;font-size:6vh}.name-form input{max-width:30vw;font-family:Georgia;padding:5px;margin-bottom:1vh;font-size:6vh;font-weight:400;font-style:normal}.name-form>a{font-family:'Little Lord Fontleroy NF';font-weight:400;font-style:normal;font-size:6vh;border-bottom:dotted 1px #000;cursor:pointer}.nav-trigger{z-index:5;position:absolute;top:1vh;left:1vw;height:35px;width:35px}.nav-trigger span:first-child{top:0}.nav-trigger span:nth-of-type(2),.nav-trigger span:nth-of-type(3){top:15px}.nav-trigger span:last-child{bottom:0}.nav-trigger span{position:absolute;display:block;width:35px;height:5px;content:'';cursor:pointer;transition:all .5s ease-in-out;border-radius:10px;background:#000}.nav-trigger-on span:first-child,.nav-trigger-on span:last-child{background-color:transparent}.nav-trigger-on span:nth-of-type(2){transform:rotate(45deg)}.nav-trigger-on span:nth-of-type(3){transform:rotate(-45deg)}.nav-trigger-on span{top:15px}.no-collections{display:flex;flex-flow:column nowrap;justify-content:center;align-items:center}.no-collections>h2{text-align:center;font-family:'Little Lord Fontleroy NF';font-weight:400;font-style:normal;font-size:8vmin;margin:0}.view-wrap{position:absolute;width:100vw;min-height:100vh}@media only screen and (max-device-width:768px){.login-form>div{width:90vw}.login-form>div input{max-width:30vw;font-family:Georgia}}
+@font-face {
+  font-family: "Little Lord Fontleroy NF";
+  src: url("4a0ed71aba5c9ed973b549db5c867c22.eot");
+  /* IE9*/
+  src: url("4a0ed71aba5c9ed973b549db5c867c22.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */ url("4a0ed71aba5c9ed973b549db5c867c22.woff2") format("woff2"), /* chrome、firefox */ url("4a0ed71aba5c9ed973b549db5c867c22.woff") format("woff"), /* chrome、firefox */ url("4a0ed71aba5c9ed973b549db5c867c22.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/ url("4a0ed71aba5c9ed973b549db5c867c22.svg#Little Lord Fontleroy NF") format("svg");
+  /* iOS 4.1- */
+}
+.collections-wrap {
+  width: 100vw;
+  min-height: 93vh;
+  padding-top: 7vh;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+}
+.collection-wrap {
+  outline: none;
+}
+.collection-wrap a {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  min-width: 300px;
+  margin: 1vh 1vw;
+  cursor: pointer;
+}
+.collection-wrap a h2 {
+  text-align: center;
+  font-family: 'Little Lord Fontleroy NF';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 4vmin;
+  margin: 0;
+}
+.collection-wrap a img {
+  padding: 1vh 1vw;
+}
+.dark {
+  color: #f7f7f7;
+  background-color: #1C1C1C !important;
+  border-color: #f7f7f7 !important;
+}
+.dark-trigger span {
+  background-color: #f7f7f7 !important;
+}
+.error-message {
+  font-family: 'Georgia';
+  color: #A64343;
+}
+.fade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  opacity: 1;
+}
+.fade.ng-enter {
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
+}
+.fade.ng-leave {
+  -webkit-transition: all .5s ease;
+  transition: all .5s ease;
+}
+.fade.ng-enter {
+  opacity: 0;
+}
+.fade.ng-enter-active {
+  opacity: 1;
+}
+.fade.ng-leave {
+  opacity: 1;
+}
+.fade.ng-leave-active {
+  opacity: 0;
+}
+.home-wrap {
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.home-wrap > h1 {
+  margin: 2vh;
+  font-size: 30vmin;
+  font-family: 'Little Lord Fontleroy NF';
+  font-weight: normal;
+  font-style: normal;
+  text-shadow: 3px 3px 4px rgba(0, 0, 0, 0.5);
+}
+.home-wrap > div h2 {
+  display: inline-block;
+  font-size: 6vh;
+  font-family: 'Little Lord Fontleroy NF';
+  font-weight: normal;
+  font-style: normal;
+  margin: 0 4vw;
+  border-bottom: dotted 2px black;
+  cursor: pointer;
+}
+.login-form {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  /*	width: 100vw;
+	height: 100vh;*/
+}
+.login-form > div {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 50vw;
+  font-family: 'Little Lord Fontleroy NF';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 6vh;
+}
+.login-form > div input {
+  max-width: 30vw;
+  font-family: 'Georgia';
+  padding: 5px;
+  margin-bottom: 1vh;
+}
+.login-form > a {
+  font-family: 'Little Lord Fontleroy NF';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 6vh;
+  border-bottom: dotted 1px black;
+  cursor: pointer;
+}
+.login-wrap {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+.logo {
+  line-height: 6vh;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 1vh;
+  right: 1vw;
+  font-size: 6vmin;
+  font-family: 'Little Lord Fontleroy NF';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 6vh;
+  z-index: 5;
+}
+.md-sidenav-left {
+  overflow-x: hidden;
+}
+.md-sidenav-left h1 {
+  padding-left: 1vw;
+  font-size: 6vmin;
+  font-family: 'Little Lord Fontleroy NF';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 6vh;
+}
+.nameControl-wrap {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+.name-form {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.name-form > label {
+  font-family: 'Little Lord Fontleroy NF';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 6vh;
+}
+.name-form input {
+  max-width: 30vw;
+  font-family: 'Georgia';
+  padding: 5px;
+  margin-bottom: 1vh;
+  font-size: 6vh;
+  font-weight: normal;
+  font-style: normal;
+}
+.name-form > a {
+  font-family: 'Little Lord Fontleroy NF';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 6vh;
+  border-bottom: dotted 1px black;
+  cursor: pointer;
+}
+.nav-trigger {
+  z-index: 5;
+  position: absolute;
+  top: 1vh;
+  left: 1vw;
+  height: 35px;
+  width: 35px;
+}
+.nav-trigger span:first-child {
+  top: 0;
+}
+.nav-trigger span:nth-of-type(2),
+.nav-trigger span:nth-of-type(3) {
+  top: 15px;
+}
+.nav-trigger span:last-child {
+  bottom: 0;
+}
+.nav-trigger span {
+  position: absolute;
+  display: block;
+  width: 35px;
+  height: 5px;
+  content: '';
+  cursor: pointer;
+  transition: all 500ms ease-in-out;
+  border-radius: 10px;
+  background: black;
+}
+.nav-trigger-on span:first-child,
+.nav-trigger-on span:last-child {
+  background-color: transparent;
+}
+.nav-trigger-on span:nth-of-type(2) {
+  transform: rotate(45deg);
+}
+.nav-trigger-on span:nth-of-type(3) {
+  transform: rotate(-45deg);
+}
+.nav-trigger-on span {
+  top: 15px;
+}
+.no-collections {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.no-collections > h2 {
+  text-align: center;
+  font-family: 'Little Lord Fontleroy NF';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 8vmin;
+  margin: 0;
+}
+.view-wrap {
+  position: absolute;
+  width: 100vw;
+  min-height: 100vh;
+}
+@media only screen and (max-device-width: 768px) {
+  .login-form > div {
+    width: 90vw;
+  }
+  .login-form > div input {
+    max-width: 30vw;
+    font-family: 'Georgia';
+  }
+}
